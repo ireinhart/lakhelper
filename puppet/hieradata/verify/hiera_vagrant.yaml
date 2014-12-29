@@ -1,0 +1,9 @@
+---
+:backends:
+  - yaml
+:hierarchy:
+  - defaults
+  - global
+  - node/%{fqdn}
+:yaml:
+  :datadir: /vagrant/puppet/hieradata

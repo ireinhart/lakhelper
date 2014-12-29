@@ -1,0 +1,7 @@
+<?php
+
+$user = array();
+$user['password'] = 'XXX';
+$user['login'] = 'EMAILADRESSE';
+$user['world'] = 'DE-2';
+$user['worldId'] = '4';
