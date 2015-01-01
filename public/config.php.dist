@@ -9,7 +9,7 @@ $system['db']['name']     = 'lakhelper';
 $system['db']['username'] = 'root';
 $system['db']['password'] = 'root';
 
-// for habitat.php
+// for habitat.php and alliance.php
 $user = array();
 $user['password'] = 'XXX';
 $user['login']    = 'EMAILADRESSE';
