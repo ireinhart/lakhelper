@@ -1,7 +1,17 @@
 <?php
 
+// DB connection
+$system = array();
+$system['db'] = array();
+$system['db']['driver']   = 'Mysqli';
+$system['db']['host']     = 'localhost';
+$system['db']['name']     = 'lakhelper';
+$system['db']['username'] = 'root';
+$system['db']['password'] = 'root';
+
+// for habitat.php
 $user = array();
 $user['password'] = 'XXX';
-$user['login'] = 'EMAILADRESSE';
-$user['world'] = 'DE-2';
-$user['worldId'] = '4';
+$user['login']    = 'EMAILADRESSE';
+$user['world']    = 'DE-2';
+$user['worldId']  = '4';
