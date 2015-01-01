@@ -10,6 +10,11 @@ A small helper script to export your live account to a small excel file (csv).
 You can use the exported file to import your habitats in Lakatoo.
 
 
+alliance.php
+===========
+A small script to save some alliance data and send an email.
+
+
 setup
 =====
 
