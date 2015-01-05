@@ -21,4 +21,4 @@
 	url = git://github.com/willdurand/puppet-composer.git
 [submodule "puppet/modules/apache2"]
 	path = puppet/modules/apache2
-	url = https://github.com/wesabe/puppet-apache2
+	url = https://github.com/jof/puppet-apache2.git
