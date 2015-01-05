@@ -25,6 +25,10 @@ $sql = new Zend\Db\Sql\Sql($dbAdapter);
 
 $httpClient = new Zend\Http\Client;
 
+$httpClient->setOptions(array(
+    'timeout'      => 60
+));
+
 $headers = new Zend\Http\Headers();
 $headers->addHeaderLine('XYClient-Capabilities', 'base,fortress,partialUpdate,simplePlayerReport');
 $headers->addHeaderLine('User-Agent', 'BKClient/4.3.0 (iPhone OS 8.1.2 / iPhone5,2)');
