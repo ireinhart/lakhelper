@@ -5,7 +5,7 @@
 	path = puppet/modules/preseed_package
 	url = https://github.com/ireinhart/puppet-preseed_package.git
 [submodule "puppet/modules/php"]
-	path = puppet/modules/preseed_package
+	path = puppet/modules/php
 	url = https://github.com/ireinhart/puppet-php.git
 [submodule "puppet/modules/apt"]
 	path = puppet/modules/apt
