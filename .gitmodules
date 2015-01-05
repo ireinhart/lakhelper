@@ -1,0 +1,21 @@
+[submodule "puppet/modules/localmail"]
+	path = puppet/modules/localmail
+	url = https://github.com/ireinhart/puppet-localmail.git
+[submodule "puppet/modules/preseed_package"]
+	path = puppet/modules/preseed_package
+	url = https://github.com/ireinhart/puppet-preseed_package.git
+[submodule "puppet/modules/php"]
+	path = puppet/modules/preseed_package
+	url = https://github.com/ireinhart/puppet-php.git
+[submodule "puppet/modules/apt"]
+	path = puppet/modules/apt
+	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "puppet/modules/stdlib"]
+	path = puppet/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "puppet/modules/wget"]
+	path = puppet/modules/wget
+	url = https://github.com/maestrodev/puppet-wget.git
+[submodule "puppet/modules/apache"]
+	path = puppet/modules/apache
+	url = https://github.com/puppetlabs/puppetlabs-apache.git
