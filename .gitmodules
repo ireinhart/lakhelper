@@ -19,3 +19,6 @@
 [submodule "puppet/modules/apache"]
 	path = puppet/modules/apache
 	url = https://github.com/puppetlabs/puppetlabs-apache.git
+[submodule "puppet/modules/composer"]
+	path = puppet/modules/composer
+	url = git://github.com/willdurand/puppet-composer.git
