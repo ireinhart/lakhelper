@@ -48,9 +48,6 @@ if($previousAlliance->count()==1) {
     $prevAlliance['points']  = $previousAlliance->points;
 
     if($prevAlliance != $alliance) {
-        //print_r("FOUND DIFF ALLIANCE:\n");
-        //print_r($prevAlliance);
-        //print_r($alliance);
         $moveAllianceToHistory = 'INSERT INTO alliance_history (SELECT * FROM alliance WHERE allianceId='.$alliance['allianceId'].')';
         $dbAdapter->query($moveAllianceToHistory, $dbAdapter::QUERY_MODE_EXECUTE); 
     }
@@ -87,35 +84,13 @@ $fields['habitat_points'] = 'habitat_points';
 $fields['habitat_link'] = 'habitat_link';
 $fh .= implode(';', $fields)."\n";
 
-//print_r($playerInformationResponse);
-
 foreach ($playerInformationResponse['Data']['Alliance'][0]['playerArray'] as $nextPlayer) {
-    flush();
-    //print_r($nextPlayer['nick']." (l+k://player?".$nextPlayer."&".$player['worldId'].")\n");
     $request = "http://ios-hh.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-".$player['world'].".woa/wa/ProfileAction/playerInformation?callback=ProfileView.getPlayerInformationCallback&id=".$nextPlayer."&".$player['playerID']."=".$player['playerHash'];
     $httpClient->setUri($request);
     $response = $httpClient->send();
     // print_r($response->getBody());
     $myPlayer = json_decode(str_replace(array('ProfileView.getPlayerInformationCallback(', '}})'), array('', '}}'), $response->getBody()), true);
     //print_r($myPlayer);
-   /* exit;
-    Array
-    (
-        [Data] => Array
-        (
-            [Player] => Array
-            (
-                [0] => Array
-
-                    [nick] => ðŸ‚DanðŸ‚
-                            [points] => 53830
-                            [alliancePermission] => 8
-                            [alliance] => 33094
-                            [isOnVacation] =>
-                            [id] => 75073
-                            [rank] => 807
-                            [entityName] => Player
-*/
     $fields = array();
     $fields['nick'] = $myPlayer['Data']['Player'][0]['nick'];
     $fields['player_points'] = $myPlayer['Data']['Player'][0]['points'];
@@ -154,9 +129,6 @@ foreach ($playerInformationResponse['Data']['Alliance'][0]['playerArray'] as $ne
         $prevPlayer['alliancePermission'] = $previousPlayer->alliancePermission;
         
         if($prevPlayer != $newPlayer) {
-            //print_r("FOUND DIFF PLAYER:\n");
-            //print_r($prevPlayer);
-            //print_r($newPlayer);
             $movePlayerToHistory = 'INSERT INTO player_history (SELECT * FROM player WHERE playerId='.$newPlayer['playerId'].')';
             $dbAdapter->query($movePlayerToHistory, $dbAdapter::QUERY_MODE_EXECUTE); 
         }
@@ -182,20 +154,7 @@ foreach ($playerInformationResponse['Data']['Alliance'][0]['playerArray'] as $ne
     }
     
     foreach($myPlayer['Data']['Habitat'] as $burg) {
-/*        (
-        [player] => 75073
-        [points] => 289
-        [id] => 399394
-        [publicHabitatType] => 0
-        [name] => ðŸŒ˜2GelsenkirchenðŸŒ’
-        [mapX] => 16808
-        [mapY] => 16831
-        [entityName] => Habitat
-    )
-*/
-        //print_r($myPlayer->Player->habitatDictionary);
         if(!isset($burg['name'])) $burg['name'] = null;
-        //print_r($burg['name'].' (l+k://coordinates?'.$burg['mapX'].','.$burg['mapY'].'&'.$player['worldId'].")\n");
         $fields['habitat'] = $burg['name'];
         $fields['habitat_points'] = $burg['points'];
         $fields['habitat_link'] = 'l+k://coordinates?'.$burg['mapX'].','.$burg['mapY'].'&'.$player['worldId'];
@@ -232,9 +191,6 @@ foreach ($playerInformationResponse['Data']['Alliance'][0]['playerArray'] as $ne
             $prevHabitat['mapY'] = $previousHabitat->mapY;
 
             if($prevHabitat != $habitat) {
-                //print_r("FOUND DIFF HABITAT:\n");
-                //print_r($prevHabitat);
-                //print_r($habitat);
                 $movePlayerToHistory = 'INSERT INTO habitat_history (SELECT * FROM habitat WHERE habitatId='.$habitat['habitatId'].')';
                 $dbAdapter->query($movePlayerToHistory, $dbAdapter::QUERY_MODE_EXECUTE); 
             }
@@ -265,19 +221,12 @@ foreach ($playerInformationResponse['Data']['Alliance'][0]['playerArray'] as $ne
     }
 }
 
-$mail = new Zend\Mail\Message();
-$mail->setTo($player['login']);
-$mail->setSubject('LK: alliance list');
+// send csv file
+$application="text/csv";
+header( "Content-Type: $application" );
+header( "Content-Disposition: attachment; filename=".$filename);
+header( "Content-Description: csv File" );
+header( "Pragma: no-cache" );
+header( "Expires: 0" );
 
-$bodyPart = new Zend\Mime\Message;
-$attachment = new Zend\Mime\Part($fh);
-$attachment->type = 'text/csv';
-$attachment->filename = $filename;
-$attachment->disposition = Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
-$bodyMessage = new Zend\Mime\Part('Alliance Liste von '.$alliance['name']);
-$bodyMessage->type = 'text/plain';
-$bodyPart->setParts(array($bodyMessage, $attachment));
-
-$mail->setBody($bodyPart);
-$transport = new Zend\Mail\Transport\Sendmail();
-$transport->send($mail);
+print_r($fh."\n");
