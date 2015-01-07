@@ -92,8 +92,10 @@ if ($games->count() == 1) {
         $request = "http://backend2.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-".$player['world'].".woa/wa/LoginAction/connect?login=".$player['login']."&password=".$player['password']."&worldId=".$player['worldId']."&clientCacheVersion=LK_LK-DE-2_4-56-46";
         $httpClient->setUri($request);
         $response = $httpClient->send();
-        $connectResponse = json_decode(str_replace(array('connect(', '}]})'), array('', '}]}'), $response->getBody()), true);
-        // print_r($connectResponse);
+        $touchDates = array();
+        preg_match('("touchDate" = ".* Etc/GMT)', $response->getBody(), $touchDates);
+        $touchDate = str_replace('"touchDate" = "', '', $touchDates[0]);
+        // print_r($response->getBody());
         foreach ($httpClient->getCookies() as $cookie) {
             if($cookie->getName() == 'playerID') {
                 $player['playerID'] = $cookie->getValue();
@@ -105,7 +107,7 @@ if ($games->count() == 1) {
             }
         }
         // calc playerHash
-        $e = $connectResponse['touchDate'];
+        $e = $touchDate;
         $b = $player['playerID'];
         $c = "9FF";
         $a = substr($e, 0, 10)." ".substr($e, 11, 19)." Etc/GMT";
