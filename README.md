@@ -11,9 +11,14 @@ You can use the exported file to import your habitats in Lakatoo.
 
 
 alliance.php
-===========
+============
 A small script to save some alliance data into the database (to build a history)
 and provide the actual alliance data (all habitats) as a cvs file for download.
+
+
+complete_habitat.php
+====================
+Grow up your habitat. At the moment only buildings.
 
 
 setup
