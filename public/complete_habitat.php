@@ -67,5 +67,3 @@ foreach($updateResponse['Data']['Habitat'] as $habitatKey => $habitat) {
     }
 }
 
-$obBuffer = ob_get_contents();
-print_r($obBuffer);
