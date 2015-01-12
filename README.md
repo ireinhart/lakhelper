@@ -3,6 +3,8 @@ LaK helper
 
 Please read the setup instruction.
 
+[ ![Codeship Status for ireinhart/lakhelper](https://codeship.com/projects/9052c2e0-7c70-0132-521c-0e6828aecb88/status?branch=master)](https://codeship.com/projects/56390)
+
 
 habitat.php
 ===========
@@ -24,7 +26,7 @@ Grow up your habitat. At the moment only buildings.
 setup
 =====
 
-* clone this repro
+* clone this repro (git clone https://github.com/ireinhart/lakhelper.git)
 * download Zend Framework 2 and copy the Zend-Folder to /library/Zend
 * copy /public/config.php.dist to /public/config.php
 * /public/config.php: edit password and login field
@@ -38,7 +40,7 @@ setup for the web
 
 Webserver with PHP required!
 
-* clone this repro
+* clone this repro (git clone https://github.com/ireinhart/lakhelper.git)
 * download Zend Framework 2 and copy the Zend-Folder to /library/Zend
 * copy /public/config.php.dist to /public/config.php 
 * /public/config.php: edit password and login field
