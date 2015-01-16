@@ -32,9 +32,12 @@ function getBuildPlan()
     $config['plan'][]['Wood Store'] = 15;
     $config['plan'][]['Stone Store'] = 15;
     $config['plan'][]['Ore Store'] = 15;
-    $config['plan'][]['Farm'] = 15;
+    $config['plan'][]['Farm'] = 14;
     $config['plan'][]['Keep'] = 5;
     $config['plan'][]['Market'] = 5;
+    $config['plan'][]['Lumberjack'] = 18;
+    $config['plan'][]['Quarry'] = 18;
+    $config['plan'][]['Ore Mine'] = 18;
     $config['plan'][]['Wood Store'] = 20;
     $config['plan'][]['Stone Store'] = 20;
     $config['plan'][]['Ore Store'] = 20;
