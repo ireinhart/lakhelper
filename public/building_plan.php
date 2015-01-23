@@ -46,14 +46,14 @@ function getBuildPlan()
     $config['plan'][]['Quarry'] = 20;
     $config['plan'][]['Ore Mine'] = 20;
     $config['plan'][]['Farm'] = 15;
-    $config['plan'][]['Keep'] = 8;
-    $config['plan'][]['Library'] = 10;
     $config['plan'][]['Farm'] = 20;
     $config['plan'][]['Lumberjack'] = 22;
     $config['plan'][]['Quarry'] = 22;
     $config['plan'][]['Ore Mine'] = 22;
     $config['plan'][]['Wall'] = 10;
+    $config['plan'][]['Keep'] = 8;
     $config['plan'][]['Arsenal'] = 15;
+    $config['plan'][]['Library'] = 10;
     $config['plan'][]['Lumberjack'] = 25;
     $config['plan'][]['Quarry'] = 25;
     $config['plan'][]['Ore Mine'] = 25;
