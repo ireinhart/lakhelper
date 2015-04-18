@@ -25,9 +25,9 @@ foreach($updateResponse['Data']['Habitat'] as $habitatKey => $habitat) {
         // not own habitat
         continue;
     }
-    foreach ($buildPlan as $stepId => $stepVaule) {
-        if($habitat['habitatBuildingKeyArray'][$stepVaule['bXLevelKey']] >= $stepVaule['primaryKey']) {
-            //print_r($habitat['name'].': '.$stepVaule['identifier'].' already build'."\n");
+    foreach ($buildPlan as $stepId => $stepValue) {
+        if($habitat['habitatBuildingKeyArray'][$stepValue['bXLevelKey']] >= $stepValue['primaryKey']) {
+            //print_r($habitat['name'].': '.$stepValue['identifier'].' already build'."\n");
         } else {
             if(count($habitat['habitatBuildingUpgradeArray'])>=2) {  
                 // maximum builds in progress
@@ -35,19 +35,19 @@ foreach($updateResponse['Data']['Habitat'] as $habitatKey => $habitat) {
                 continue 2;
             } elseif (count($habitat['habitatBuildingUpgradeArray'])==1) { 
                 // one build in progress
-                if($habitat['habitatBuildingUpgradeArray']['0'] == $stepVaule['primaryKey'].'-'.$habitat['id']) {
+                if($habitat['habitatBuildingUpgradeArray']['0'] == $stepValue['primaryKey'].'-'.$habitat['id']) {
                     // trying to build same building again, that won't work, run foreach once again
-                    print_r($habitat['name'].': Work on '.$stepVaule['identifier'].' already in progress '.$stepVaule['primaryKey']."\n");
+                    print_r($habitat['name'].': Work on '.$stepValue['identifier'].' already in progress '.$stepValue['primaryKey']."\n");
                     continue 1;
                 }
             }
-            // now, i kown wich building can be build
-            print_r($habitat['name'].': '.$stepVaule['identifier'].' can be build => use in call this primaryKey: '.$stepVaule['primaryKey']."\n");
-            if($stepVaule['buildResourceDictionary']['1']<$habitat['habitatResourceDictionary']['1']['amount'] and 
-                $stepVaule['buildResourceDictionary']['2']<$habitat['habitatResourceDictionary']['2']['amount'] and 
-                $stepVaule['buildResourceDictionary']['3']<$habitat['habitatResourceDictionary']['3']['amount']) {
+            // now, i know which building can be build
+            print_r($habitat['name'].': '.$stepValue['identifier'].' can be build => use in call this primaryKey: '.$stepValue['primaryKey']."\n");
+            if($stepValue['buildResourceDictionary']['1']<$habitat['habitatResourceDictionary']['1']['amount'] and
+                $stepValue['buildResourceDictionary']['2']<$habitat['habitatResourceDictionary']['2']['amount'] and
+                $stepValue['buildResourceDictionary']['3']<$habitat['habitatResourceDictionary']['3']['amount']) {
                 // upgrade building
-                $request = "http://ios-hh.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-".$player['world'].".woa/wa/HabitatAction/upgradeBuilding?callback=Session.updateCallback&habitatID=".$habitat['id']."&paymentGranted=false&primaryKey=".$stepVaule['primaryKey']."&".$player['playerID']."=".$player['playerHash'];
+                $request = "http://ios-hh.lordsandknights.com/XYRALITY/WebObjects/LKWorldServer-".$player['world'].".woa/wa/HabitatAction/upgradeBuilding?callback=Session.updateCallback&habitatID=".$habitat['id']."&paymentGranted=false&primaryKey=".$stepValue['primaryKey']."&".$player['playerID']."=".$player['playerHash'];
                 $httpClient->setUri($request);
                 $response = $httpClient->send();
                 //print_r($response->getBody()."\n");
