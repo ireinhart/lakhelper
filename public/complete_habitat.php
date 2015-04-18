@@ -41,6 +41,20 @@ foreach($updateResponse['Data']['Habitat'] as $habitatKey => $habitat) {
                     continue 1;
                 }
             }
+            if($habitat['habitatResourceDictionary']['4']['amount'] == 0) {
+                // print_r($habitat['name'].': not enough farmers => override '.$stepValue['identifier'].', level up the farm now\n");
+                foreach ($habitat['habitatBuildingKeyArray'] as $buildKey) {
+                    if(substr($buildKey, 0, 1) == 8) { // 8 = Farm
+                        $nextFarmKey = $buildKey + 1;
+                    }
+                }
+                foreach($buildPlan as $buildStep) {
+                    if($buildStep['primaryKey'] == $nextFarmKey) {
+                        $stepValue = $buildStep;
+                    }
+                }
+                //print_r($habitat['name'].': new step is '.$stepValue['primaryKey'].' '.$stepValue['identifier']);
+            }
             // now, i know which building can be build
             print_r($habitat['name'].': '.$stepValue['identifier'].' can be build => use in call this primaryKey: '.$stepValue['primaryKey']."\n");
             if($stepValue['buildResourceDictionary']['1']<$habitat['habitatResourceDictionary']['1']['amount'] and
