@@ -6,12 +6,6 @@ DROP DATABASE IF EXISTS `lakhelper`;
 CREATE DATABASE IF NOT EXISTS `lakhelper` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `lakhelper`;
 
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `alliance`
---
-
 CREATE TABLE `alliance` (
   `allianceId` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -21,12 +15,6 @@ CREATE TABLE `alliance` (
   UNIQUE KEY `allianceid` (`allianceId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `alliance_history`
---
-
 CREATE TABLE `alliance_history` (
   `allianceId` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -34,12 +22,6 @@ CREATE TABLE `alliance_history` (
   `points` int(11) NOT NULL,
   `versionId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `game`
---
 
 CREATE TABLE `game` (
   `gameId` int(11) NOT NULL AUTO_INCREMENT,
@@ -54,12 +36,6 @@ CREATE TABLE `game` (
   PRIMARY KEY (`gameId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `habitat`
---
-
 CREATE TABLE `habitat` (
   `habitatId` int(11) NOT NULL,
   `playerId` int(11) NOT NULL,
@@ -71,12 +47,6 @@ CREATE TABLE `habitat` (
   UNIQUE KEY `habitatId` (`habitatId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `habitat_history`
---
-
 CREATE TABLE `habitat_history` (
   `habitatId` int(11) NOT NULL,
   `playerId` int(11) NOT NULL,
@@ -86,12 +56,6 @@ CREATE TABLE `habitat_history` (
   `points` int(11) NOT NULL,
   `versionId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `player`
---
 
 CREATE TABLE `player` (
   `playerId` int(11) NOT NULL,
@@ -105,12 +69,6 @@ CREATE TABLE `player` (
   UNIQUE KEY `playerId` (`playerId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `player_history`
---
-
 CREATE TABLE `player_history` (
   `playerId` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -121,12 +79,6 @@ CREATE TABLE `player_history` (
   `alliancePermission` int(11) NOT NULL,
   `versionId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `start_transit`
---
 
 CREATE TABLE `start_transit` (
   `transitId` int(11) NOT NULL AUTO_INCREMENT,
@@ -140,12 +92,6 @@ CREATE TABLE `start_transit` (
   `errorCount` int(11) NOT NULL,
   PRIMARY KEY (`transitId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `version`
---
 
 CREATE TABLE `version` (
   `versionId` int(10) unsigned NOT NULL AUTO_INCREMENT,
