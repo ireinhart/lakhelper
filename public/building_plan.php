@@ -119,6 +119,7 @@ function levelUp($buildingName, $buildingLevel, &$habitat, $buildingList, &$orde
                     'bXLevelKey' => $value['order'] - 1,
                     'level' => $value['level'],
                     'buildResourceDictionary' => $value['buildResourceDictionary'],
+                    'volumeAmount' => $value['volumeAmount'],
                 );
                 $habitat[$buildingName]['level'] = $habitat[$buildingName]['level'] + 1;
                 levelUp($buildingName, $buildingLevel, $habitat, $buildingList, $orderList);
