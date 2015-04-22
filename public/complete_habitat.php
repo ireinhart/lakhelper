@@ -41,7 +41,7 @@ foreach($updateResponse['Data']['Habitat'] as $habitatKey => $habitat) {
                     continue 1;
                 }
             }
-            if(($habitat['habitatResourceDictionary']['4']['amount'] - $habitat['habitatResourceDictionary']['4']['storeAmount']) < $stepValue['volumeAmount']) {
+            if(($habitat['habitatResourceDictionary']['4']['storeAmount'] - $habitat['habitatResourceDictionary']['4']['amount']) < $stepValue['volumeAmount']) {
                 // print_r($habitat['name'].': not enough farmers => override '.$stepValue['identifier'].", level up the farm now\n");
                 foreach ($habitat['habitatBuildingKeyArray'] as $buildKey) {
                     if(substr($buildKey, 0, 1) == 8) { // 8 = Farm
